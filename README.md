@@ -6,9 +6,6 @@ It is intented to make it easier to add css classes, click events and more, for 
 All cells are identified by the data-position attribute on the HTML element e.g. "A1", "B1" etc., and have the class 'plate-cell'.
 <br> 
 
-<img src="./img/plate.png" alt="Plate"/>
-<p style="font-style: italic">8 x 12 plate with occupied cells on half of the cells</p>
-
 ## HTML
 
 To create the plate overview, insert a "div" HTML element where you want the plate overview to be generated, and select an id for the element:
@@ -81,9 +78,3 @@ __enable__: Removes the overlay that disables click events.
 __clearContent__: Clears content/added classes, but keeps the table.
 
 __addClassToCells__: Adds a single class to an array of cells. Example: _plate.addClassToCells(['G12', 'H12'], 'bg-blue')_.
-
-<img src="./img/selectedCell.PNG" alt="Plate with selected cell"/>
-<p style="font-style: italic">Plate with selected cell on position A7</p>
-
-<img src="./img/addClassToCells.PNG" alt="Plate with added classes"/>
-<p style="font-style: italic">Plate with added classes on cell G12 and H12</p>
