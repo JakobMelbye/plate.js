@@ -78,3 +78,5 @@ __enable__: Removes the overlay that disables click events.
 __clearContent__: Clears content/added classes, but keeps the table.
 
 __addClassToCells__: Adds a single class to an array of cells. Example: _plate.addClassToCells(['G12', 'H12'], 'bg-blue')_.
+
+__forEachPosition___ Runs a callback function for each cell/position on the plate. The callback function receives the cell html element and the position as parameters.
