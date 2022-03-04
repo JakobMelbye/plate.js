@@ -1,9 +1,9 @@
 # Plate.js
 
-## Introduction
+## Description
 This library can be used to generate a visual representation of a plate. 
-It is intented to make it easier to add css classes, click events and more, for various use cases. 
-All cells are identified by the data-position attribute on the HTML element e.g. "A1", "B1" etc., and have the class 'plate-cell'.
+It is intented to make it easier to add css classes, click events and more for various use cases. 
+All cells are identified by the data-position attribute on the HTML element e.g. "A1", "B1" etc., and contains the class 'plate-cell'.
 <br> 
 
 ## HTML
@@ -79,4 +79,5 @@ __clearContent__: Clears content/added classes, but keeps the table.
 
 __addClassToCells__: Adds a single class to an array of cells. Example: _plate.addClassToCells(['G12', 'H12'], 'bg-blue')_.
 
-__forEachPosition__ Runs a callback function for each cell/position on the plate. The callback function receives the cell html element and the position as parameters.
+__forEachPosition__: Runs a callback function for each cell/position on the plate. The callback function receives the cell html element and the position as parameters. The direction can be set by using the second parameter (default is vertical - can either be vertical or horizontal). 
+Example: _plate.forEachPosition((cellElement, position) => {console.log(cellElement, position)})_.
