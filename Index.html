@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./plate/plate.css">
+    <style>
+      .plate-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+
+      #plate {
+        width: 50%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+
+      .blue-cell {
+        background-color: blue;
+      }
+
+      .blue-cell:hover {
+        opacity: .5;
+      }
+
+      .green-cell {
+        background-color: green;
+      }
+
+      .green-cell:hover {
+        cursor: pointer;
+      }
+
+      .yellow-cell {
+        background-color: yellow;
+      }
+
+      .yellow-cell::before {
+        content: attr(data-position);
+        color: black;
+      }
+
+      .clicked-cell::before {
+        content: 'X';
+        color: white;
+        font-size: larger;
+      }
+    </style>
+  </head>
+  <div class="plate-container">
+    <div id="plate"></div>
+  </div>
+
+  <body>
+    <script src="./plate/plate.js"></script>
+    <script>
+
+      const blueCellData = [
+        {
+          "Id": "43e92955-a6f4-42c2-9a6c-9b39dfa22f0f",
+          "Position": "A1",
+          "MatrixType": "Serum",
+          "Amount": 31,
+          "Project": "Project 1"
+        },
+        {
+          "Id": "75d427cb-83e6-4bb6-8970-55bfc6a4f306",
+          "Position": "B1",
+          "MatrixType": "Serum",
+          "Amount": 93,
+          "Project": "Project 1"
+        },
+        {
+          "Id": "c03dab2d-575d-4ef4-ad3a-93be00ce4fcb",
+          "Position": "C1",
+          "MatrixType": "Serum",
+          "Amount": 9,
+          "Project": "Project 1"
+        },
+        {
+          "Id": "8987cfe0-bc27-4f07-aa43-c61ea6c006e9",
+          "Position": "D1",
+          "MatrixType": "Serum",
+          "Amount": 58,
+          "Project": "Project 1"
+        },
+        {
+          "Id": "d517e349-8998-495f-b812-06a81f2c4104",
+          "Position": "E1",
+          "MatrixType": "Serum",
+          "Amount": 22,
+          "Project": "Project 1"
+        },
+        {
+          "Id": "7544db7c-0630-4025-967a-421de204470a",
+          "Position": "F1",
+          "MatrixType": "Serum",
+          "Amount": 0,
+          "Project": "Project 1"
+        }
+      ];
+
+      const blueCells = blueCellData.map(x => x.Position);
+      const greenCells = ['B4', 'C5', 'D6', 'E7', 'F8'];
+      const yellowCells = ['G12', 'H12'];
+
+      const plateOptions = {
+        numberOfRows: 8,
+        numberOfColumns: 12,
+        contentInformation: blueCellData,
+        onClickCell: onClickCellDoThis
+      };
+
+      const plate = new Plate('plate', plateOptions);
+
+      plate.render();
+      plate.addClassToCells(blueCells, 'blue-cell');
+      plate.addClassToCells(yellowCells, 'yellow-cell');
+      plate.forEachPosition(forEachPositionDoThis);
+
+      function forEachPositionDoThis(cellElement, position) {
+        if (greenCells.includes(position)) {
+          cellElement.classList.add('green-cell');
+        }
+      }
+
+      function onClickCellDoThis(cellElement, position) {
+        if (cellElement.classList.contains('green-cell')) {
+          cellElement.classList.toggle('clicked-cell');
+        }
+      }
+
+    </script>
+  </body>
+
+</html>
