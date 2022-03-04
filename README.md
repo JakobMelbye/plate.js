@@ -57,7 +57,7 @@ __numberOfRows:__ Sets the number of rows.
 
 __numberOfColumns:__ Sets the number of columns.
 
-__cellContentInformation:__ An array of objects containing information about each cell. This is the information that will displayed when hovering over a cell. The cell information is mapped by using the _position_ property in the object, so this propery is required. 
+__contentInformation:__ An array of objects containing information about each cell. This is the information that will displayed when hovering over a cell. The cell information is mapped by using the _position_ property in the object, so this propery is required. 
 
 Example: _[{barcode: 'BAR111', matrixType: 'Plasma', position: 'A1'},{barcode: 'BAR222', matrixType: 'Serum', position: 'B1'}]_
 
