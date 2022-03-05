@@ -6,6 +6,8 @@ It is intented to make it easier to add css classes, click events and more for v
 All cells are identified by the data-position attribute on the HTML element e.g. "A1", "B1" etc., and contains the class 'plate-cell'.
 <br> 
 
+<img src="./Plate.js.png" alt="Plate.js">
+
 ## HTML
 
 To create the plate overview, insert a "div" HTML element where you want the plate overview to be generated, and select an id for the element:
@@ -81,3 +83,4 @@ __addClassToCells__: Adds a single class to an array of cells. Example: _plate.a
 
 __forEachPosition__: Runs a callback function for each cell/position on the plate. The callback function receives the cell html element and the position as parameters. The direction can be set by using the second parameter (default is vertical - can either be vertical or horizontal). 
 Example: _plate.forEachPosition((cellElement, position) => {console.log(cellElement, position)})_.
+
