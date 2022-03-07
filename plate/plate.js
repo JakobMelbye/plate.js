@@ -4,7 +4,7 @@ class Plate {
     numberOfRows: 8,
     numberOfColumns: 12,
     contentInformation: [],
-    onClickCell: (cellElement, position) => {}
+    onClickCell: (cellElement, position) => { }
   };
 
   static Direction = {
@@ -19,11 +19,11 @@ class Plate {
    * @param {number} numberOfRows number of rows in the plate
    * @param {number} numberOfColumns number of columns in the plate
    */
-  constructor (htmlId, options = {}) {
+  constructor(htmlId, options = {}) {
     this.htmlId = htmlId;
     this.#plateElement = document.getElementById(htmlId);
 
-    const currentOptions = {...this.DEFAULT_OPTIONS, ...options};
+    const currentOptions = { ...this.DEFAULT_OPTIONS, ...options };
 
     for (const [key, value] of Object.entries(currentOptions)) {
       this[key] = value ?? this.DEFAULT_OPTIONS[key];
@@ -79,7 +79,7 @@ class Plate {
     }
   };
 
-  forEachPosition = (callBack = (cellElement, position) => {}, direction = Plate.Direction.VERTICAL) => {
+  forEachPosition = (callBack = (cellElement, position) => { }, direction = Plate.Direction.VERTICAL) => {
     switch (direction) {
       case Plate.Direction.VERTICAL:
         this.#iteratePositionsVertical(callBack);
@@ -91,7 +91,7 @@ class Plate {
     }
   };
 
-  displayColorInfoLegend = (parentElementId = '', items = [{class: '', text: ''}]) => {
+  displayColorInfoLegend = (parentElementId = '', items = [{ class: '', text: '' }]) => {
     items.forEach(item => {
       const colorInfo = ` <div class="cell-info-color ${item.class} mx-2"></div>
                           <div class="cell-info-label me-3">${item.text}</div>`;
@@ -120,9 +120,9 @@ class Plate {
   };
 
   #iteratePositionsHorizontal = callback => {
-    for (let rowNumber = 0;rowNumber < this.numberOfRows;rowNumber++) {
+    for (let rowNumber = 0; rowNumber < this.numberOfRows; rowNumber++) {
       let rowChar = String.fromCharCode('A'.charCodeAt(0) + rowNumber);
-      for (let colNumber = 1;colNumber <= this.numberOfColumns;colNumber++) {
+      for (let colNumber = 1; colNumber <= this.numberOfColumns; colNumber++) {
         let position = rowChar + colNumber;
         const cellElem = this.#plateElement.querySelector(`[data-position=${position}]`);
         callback(cellElem, position);
@@ -131,8 +131,8 @@ class Plate {
   };
 
   #iteratePositionsVertical = callback => {
-    for (let colNumber = 1;colNumber < this.numberOfColumns + 1;colNumber++) {
-      for (let rowNumber = 0;rowNumber <= this.numberOfRows - 1;rowNumber++) {
+    for (let colNumber = 1; colNumber < this.numberOfColumns + 1; colNumber++) {
+      for (let rowNumber = 0; rowNumber <= this.numberOfRows - 1; rowNumber++) {
         let rowChar = String.fromCharCode('A'.charCodeAt(0) + rowNumber);
         let position = rowChar + colNumber;
         const cellElem = this.#plateElement.querySelector(`[data-position=${position}]`);
@@ -142,7 +142,6 @@ class Plate {
   };
 
   #displayCellContentOnHover = () => {
-    if (!this.contentInformation?.length > 0) return;
     this.#addCellContentEventListeners();
     return this;
   };
@@ -253,11 +252,11 @@ class Plate {
   #drawTable = () => {
     this.#plateElement.classList.add('plate-overview');
 
-    for (let row = 0;row <= this.numberOfRows;row++) {
+    for (let row = 0; row <= this.numberOfRows; row++) {
       const plateRowElement = this.#createPlateRowElement();
       const rowCells = [];
 
-      for (let col = 0;col <= this.numberOfColumns;col++) {
+      for (let col = 0; col <= this.numberOfColumns; col++) {
         const cell = this.#createCellElement(col, row);
         rowCells.push(cell);
       }
